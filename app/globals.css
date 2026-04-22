@@ -1,26 +1,74 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050505;
+  --foreground: #ffffff;
+  --gold-primary: #C5A059;
+  --gold-secondary: #8B7355;
+  --gold-highlight: #FFD700;
+  --lime: #DFFF00;
+  --nautical-blue: #1B2B34;
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-gold: var(--gold-primary);
+  --color-gold-secondary: var(--gold-secondary);
+  --color-gold-highlight: var(--gold-highlight);
+  --color-lime: var(--lime);
+  --color-nautical: var(--nautical-blue);
+  
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background-color: #050505 !important;
+  color: #ffffff !important;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
-body {
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, var(--gold-secondary) 0%, var(--gold-primary) 50%, var(--gold-highlight) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-secondary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-primary);
+}
+
+/* TradingView Widget Overrides */
+.tradingview-widget-container {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
 }
